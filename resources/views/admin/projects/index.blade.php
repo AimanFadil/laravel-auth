@@ -17,6 +17,7 @@
                             <th scope="col">Data</th>
                             <th scope="col">Emulazione</th>
                             <th scope="col">Descrizione</th>
+                            <th scope="col">Vedi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,6 +30,9 @@
                                 <td>{{ $project->data }}</td>
                                 <td>{{ $project->emulazione }}</td>
                                 <td>{{ $project->descrizione }}</td>
+                                <td>
+                                    <a href="{{ route('admin.projects.show', ['project' => $project->id]) }}">Clicca</a>
+                                </td>
                             </tr>
                         @endforeach
 
