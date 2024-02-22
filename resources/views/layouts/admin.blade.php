@@ -95,9 +95,9 @@
             </nav>
         </header>
 
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg bg-body-white">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Admin Navbar</a>
+                <a class="navbar-brand text-danger" href="#">Admin Navbar</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
