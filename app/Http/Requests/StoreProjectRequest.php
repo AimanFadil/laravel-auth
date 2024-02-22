@@ -26,7 +26,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'nome' => 'required|max:150',
             'programma' => 'required|max:150',
-            'data' => 'required',
+            'data' => 'required|date',
             'emulazione' => 'required|max:150',
             'descrizione' => 'required',
         ];
@@ -40,6 +40,7 @@ class StoreProjectRequest extends FormRequest
             'programma.required' => 'Il programma del progetto è obbligatorio',
             'programma.max' => 'Il programma del progetto può essere lungo massimo 150 caratteri',
             'data.required' => 'La data del progetto è obbligatoria',
+            'data.date' => 'La data deve essere una data',
             'emulazione.required' => 'L emulazione del progetto è obbligatoria',
             'emulazione.max' => 'L emulazione del progetto può essere lunga massimo 150 caratteri',
             'descrizione.required' => 'La descrizione del progetto è obbligatoria',
