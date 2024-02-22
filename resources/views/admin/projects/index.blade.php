@@ -23,6 +23,7 @@
                             <th scope="col">Emulazione</th>
                             <th scope="col">Descrizione</th>
                             <th scope="col">Vedi</th>
+                            <th scope="col">Modifica</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +38,10 @@
                                 <td>{{ $project->descrizione }}</td>
                                 <td>
                                     <a href="{{ route('admin.projects.show', ['project' => $project->id]) }}">Clicca</a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.projects.edit', ['project' => $project->id]) }}"
+                                        class="text-warning">Modifica</a>
                                 </td>
                             </tr>
                         @endforeach

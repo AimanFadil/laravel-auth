@@ -42,11 +42,18 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+        /* $form_data = $request->all();
+        $project = new Project();
+        $project->fill($form_data);
+        $slug = Str::slug($form_data['nome'], '-');
+        $project->slug = $slug;
+        $project->save(); */
         $form_data = $request->all();
         $project = new Project();
         $project->fill($form_data);
         $slug = Str::slug($form_data['nome'], '-');
         $project->slug = $slug;
+
         $project->save();
 
         return redirect()->route('admin.projects.index');
@@ -71,7 +78,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -83,7 +90,14 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        //
+
+
+        $form_data = $request->all();
+        $slug = Str::slug($form_data['nome'], '-');
+        $form_data['slug'] = $slug;
+        $project->update($form_data);
+
+        return redirect()->route('admin.projects.index');
     }
 
     /**
