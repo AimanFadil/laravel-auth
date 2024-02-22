@@ -8,7 +8,7 @@
                     <h1>Projects</h1>
                 </div>
                 <div class="col-3 ">
-                    <a href="{{ route('admin.projects.create') }}" class="btn btn-danger">CREA POST</a>
+                    <a href="{{ route('admin.projects.create') }}" class="btn btn-success">CREA POST</a>
                 </div>
             </div>
             <div class="col-12">
@@ -24,6 +24,7 @@
                             <th scope="col">Descrizione</th>
                             <th scope="col">Vedi</th>
                             <th scope="col">Modifica</th>
+                            <th scope="col">Elimina</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,6 +43,17 @@
                                 <td>
                                     <a href="{{ route('admin.projects.edit', ['project' => $project->id]) }}"
                                         class="text-warning">Modifica</a>
+                                </td>
+                                <td>
+                                    <form action="{{ route('admin.projects.destroy', ['project' => $project->id]) }}"
+                                        method="post"
+                                        onsubmit="return confirm('Sei sicuro di voler eliminare questo progetto?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="submit" class="text-danger" value="Elimina">
+                                    </form>
+
+
                                 </td>
                             </tr>
                         @endforeach
