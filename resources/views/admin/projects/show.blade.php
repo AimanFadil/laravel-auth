@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12 p-4">
                 <div class="card" style="width: 18rem;">
-                    <img src="{{ $project->emulazione }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('/storage/' . $project->emulazione) }}" class="card-img-top">
                     <div class="card-body">
                         <h5 class="card-title">{{ $project->nome }}</h5>
                         <p class="card-text">{{ $project->slug }}</p>

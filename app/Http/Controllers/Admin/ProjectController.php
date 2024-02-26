@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -42,14 +43,15 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        /* $form_data = $request->all();
-        $project = new Project();
-        $project->fill($form_data);
-        $slug = Str::slug($form_data['nome'], '-');
-        $project->slug = $slug;
-        $project->save(); */
         $form_data = $request->all();
         $project = new Project();
+
+        if ($request->hasFile('emulazione')) {
+            $path = Storage::disk('public')->put('projects_image', $form_data['emulazione']);
+            $form_data['emulazione'] = $path;
+        }
+
+
         $project->fill($form_data);
         $slug = Str::slug($form_data['nome'], '-');
         $project->slug = $slug;
@@ -93,6 +95,15 @@ class ProjectController extends Controller
 
 
         $form_data = $request->all();
+
+        if ($request->hasFile('emulazione')) {
+
+            if ($project->emulazione != null) {
+                Storage::disk('public')->delete($project->emulazione);
+            }
+            $path = Storage::disk('public')->put('projects_image', $form_data['emulazione']);
+            $form_data['emulazione'] = $path;
+        }
         $slug = Str::slug($form_data['nome'], '-');
         $form_data['slug'] = $slug;
         $project->update($form_data);
@@ -108,6 +119,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if ($project->emulazione != null) {
+            Storage::disk('public')->delete($project->emulazione);
+        }
         $project->delete();
         return redirect()->route('admin.projects.index');
     }

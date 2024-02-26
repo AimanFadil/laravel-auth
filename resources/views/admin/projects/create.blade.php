@@ -7,7 +7,7 @@
                 <h1>Crea un nuovo progetto</h1>
             </div>
             <div class="col-12">
-                <form action="{{ route('admin.projects.store') }}" method="post">
+                <form action="{{ route('admin.projects.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group py-2">
                         <label for="nome" class="control-label">Nome</label>
@@ -35,8 +35,8 @@
                     </div>
                     <div class="form-group py-2">
                         <label for="emulazione" class="control-label">Emulazione</label>
-                        <input type="text" name="emulazione" id="emulazione" value="{{ old('emulazione') }}"
-                            placeholder="emulazione" class="form-control">
+                        <input type="file" name="emulazione" id="emulazione" placeholder="emulazione"
+                            class="form-control">
                         @error('emulazione')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror

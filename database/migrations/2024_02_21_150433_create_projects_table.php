@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('programma', 150);
             $table->dateTime('data');
-            $table->string('emulazione', 150);
+            $table->string('emulazione')->nullable();
             $table->text('descrizione');
             $table->timestamps();
         });

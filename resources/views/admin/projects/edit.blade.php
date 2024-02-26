@@ -7,7 +7,7 @@
                 <h1>Modifica il progetto</h1>
             </div>
             <div class="col-12">
-                <form action="{{ route('admin.projects.update', $project->id) }}" method="post">
+                <form action="{{ route('admin.projects.update', $project->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group py-2">
@@ -35,9 +35,9 @@
                         @enderror
                     </div>
                     <div class="form-group py-2">
-                        <label for="emulazione" class="control-label">Emulazione</label>
-                        <input type="text" name="emulazione" id="emulazione" value="{{ $project->emulazione }}"
-                            placeholder="emulazione" class="form-control">
+                        <label for="emulazione" class="control-label">Emulazione/Immagine</label>
+                        <input type="file" name="emulazione" id="emulazione" placeholder="emulazione"
+                            class="form-control">
                         @error('emulazione')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror

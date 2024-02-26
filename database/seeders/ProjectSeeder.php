@@ -24,7 +24,6 @@ class ProjectSeeder extends Seeder
             $new_project->slug = Str::slug($new_project->nome, '-');
             $new_project->programma = $faker->company();
             $new_project->data = $faker->dateTime();
-            $new_project->emulazione = $faker->imageUrl(640, 480, 'animals', true);
             $new_project->descrizione = $faker->paragraph();
             $new_project->save();
         }
