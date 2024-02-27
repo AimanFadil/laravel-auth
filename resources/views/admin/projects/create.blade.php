@@ -18,7 +18,7 @@
                         @enderror
                     </div>
                     <div class="form-group py-2">
-                        <label for="programma" class="control-label">Programma</label>
+                        <label for="programma " class="control-label">Programma</label>
                         <input type="text" name="programma" id="programma" value="{{ old('programma') }}"
                             placeholder="programma" class="form-control">
                         @error('programma')
